@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,minimum-scale=1">
+<link rel="shortcut icon" href="https://www.gstatic.com/recaptcha/admin/favicon.ico" type="image/x-icon">
+<link rel="canonical" href="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php">
+<script type="text/javascript" async="" src="reCAPTCHA%20demo%20-%20Request%20scores_files/recaptcha__zh_tw.js" crossorigin="anonymous" integrity="sha384-me8NUPVMCigbZ2cMyC8VOttgBP/1ARDvYnhQ7ilGK6P/xOx7aTMyz3J+C+le/vFc"></script><script type="application/ld+json">{ "@context": "http://schema.org", "@type": "WebSite", "name": "reCAPTCHA demo - Request scores", "url": "https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php" }</script>
+<meta name="description" content="reCAPTCHA demo - Request scores">
+<meta property="og:url" content="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php">
+<meta property="og:type" content="website">
+<meta property="og:title" content="reCAPTCHA demo - Request scores">
+<meta property="og:description" content="reCAPTCHA demo - Request scores">
+<link rel="stylesheet" type="text/css" href="reCAPTCHA%20demo%20-%20Request%20scores_files/examples.css">
+<title>reCAPTCHA demo - Request scores</title>
+</head><body><header>
+    <h1>reCAPTCHA demo</h1><h2>Request scores</h2>
+    <p><a href="https://recaptcha-demo.appspot.com/">↩️ Home</a></p>
+</header>
+<main>
+    <p>The reCAPTCHA v3 API provides a confidence score for each request.</p>
+    <p><strong>NOTE:</strong>This is a sample implementation, the score 
+returned here is not a reflection on your Google account or type of 
+traffic. In production, refer to the distribution of scores shown in <a href="https://www.google.com/recaptcha/admin" target="_blank">your admin interface</a> and adjust your own threshold accordingly. <strong>Do not raise issues regarding the score you see here.</strong></p>
+    <ol id="recaptcha-steps">
+        <li class="step0">reCAPTCHA script loading</li>
+        <li class="step1"><kbd>grecaptcha.ready()</kbd> fired, calling <pre>grecaptcha.execute('6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696', {action: 'examples/v3scores'})'</pre></li>
+        <li class="step2">Received token from reCAPTCHA service, sending to our backend with:
+        <pre class="token">fetch('/recaptcha-v3-verify.php?action=examples/v3scores&amp;token='03AGdBq25yaPNElz6jZAiwxdWheI9xlS6_ZSbI-MZnfC68WUl3R8o5KXP5Ss5sxNnPi2-DOTjiZFsk989m0ORdKm60qHrEEGSAkRJK66qnumi0WdyATpj-9csHjihxRhvrhropBx9HDOnuvxlLPYb8bMerCpyLNViNDJEsOVrPD5fSOzVvwNWcpZJ_EPBREYjtdw_ImErz6aByj9qQgZ-_v0eCSTk4kKzJMe7hPoF07COFxsD38ZfsS7bJbbEUXIlUATXzd-SwN6J71d3Gv_YtiH3gUgam3T-odNvZ5fL9-l_ZyvQHSAHnJtSxLzV0BGGpYZ-YJ7qubjinVfR1V7NwB2kEYd8aAa1Rq7XHkqwEM0O7CAFBr3zgInQ-SvkvWtQC-MFh-2XlQQPv6slGK5AOUtFqQM1101rL7CV_tFEUVV3hfFEquvzVMu4I09At9L2pCtr4CL1xBXhQ2-THLNIihfe31RczNcSWk-z8uFJzz4s-WJ0ez9zCME0</pre></li>
+        <li class="step3">Received response from our backend: <pre class="response">{
+  "success": true,
+  "hostname": "recaptcha-demo.appspot.com",
+  "challenge_ts": "2021-01-01T07:21:25Z",
+  "apk_package_name": null,
+  "score": 0.9,
+  "action": "examples/v3scores",
+  "error-codes": []
+}</pre></li>
+    </ol>
+    <p><a href="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php">⤴️ Try again</a></p>
+    <script src="reCAPTCHA%20demo%20-%20Request%20scores_files/api.js"></script>
+    <script>
+        const steps = document.getElementById('recaptcha-steps');
+        grecaptcha.ready(function() {
+            document.querySelector('.step1').classList.remove('hidden');
+            grecaptcha.execute('6LdyC2cUAAAAACGuDKpXeDorzUDWXmdqeg-xy696', {action: 'examples/v3scores'}).then(function(token) {
+                document.querySelector('.token').innerHTML = 'fetch(\'/recaptcha-v3-verify.php?action=examples/v3scores&token=\'' + token;
+                document.querySelector('.step2').classList.remove('hidden');
+
+                fetch('/recaptcha-v3-verify.php?action=examples/v3scores&token='+token).then(function(response) {
+                    response.json().then(function(data) {
+                        document.querySelector('.response').innerHTML = JSON.stringify(data, null, 2);
+                        document.querySelector('.step3').classList.remove('hidden');
+                    });
+                });
+            });
+        });
+    </script>
+    </main>
+<!-- Google Analytics - just ignore this -->
+<script async="" src="reCAPTCHA%20demo%20-%20Request%20scores_files/js"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-123057962-1');</script>
+<div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: 0px 0px 5px gray; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="reCAPTCHA%20demo%20-%20Request%20scores_files/anchor.htm" role="presentation" name="a-rek2gicdr68d" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" width="256" height="60" frameborder="0"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;">03AGdBq25yaPNElz6jZAiwxdWheI9xlS6_ZSbI-MZnfC68WUl3R8o5KXP5Ss5sxNnPi2-DOTjiZFsk989m0ORdKm60qHrEEGSAkRJK66qnumi0WdyATpj-9csHjihxRhvrhropBx9HDOnuvxlLPYb8bMerCpyLNViNDJEsOVrPD5fSOzVvwNWcpZJ_EPBREYjtdw_ImErz6aByj9qQgZ-_v0eCSTk4kKzJMe7hPoF07COFxsD38ZfsS7bJbbEUXIlUATXzd-SwN6J71d3Gv_YtiH3gUgam3T-odNvZ5fL9-l_ZyvQHSAHnJtSxLzV0BGGpYZ-YJ7qubjinVfR1V7NwB2kEYd8aAa1Rq7XHkqwEM0O7CAFBr3zgInQ-SvkvWtQC-MFh-2XlQQPv6slGK5AOUtFqQM1101rL7CV_tFEUVV3hfFEquvzVMu4I09At9L2pCtr4CL1xBXhQ2-THLNIihfe31RczNcSWk-z8uFJzz4s-WJ0ez9zCME0</textarea></div><iframe style="display: none;"></iframe></div></body></html>
