@@ -23,7 +23,7 @@
             grecaptcha.execute('6LdkiRwaAAAAAPQ9VOZDoueQVGdVK_-vP94I_5HC', {action: 'examples/v3scores'}).then(function(token) {
                 document.querySelector('.token').innerHTML = 'fetch(\'token=\'' + token + '\')';
 
-                fetch('https://www.google.com/recaptcha/api/siteverify').then(function(response) {
+                fetch('https://www.google.com/recaptcha/api/siteverify', {mode: 'no-cors'}).then(function(response) {
                     response.json().then(function(data) {
                         document.querySelector('.response').innerHTML = JSON.stringify(data, null, 2);
                     });
