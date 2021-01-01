@@ -21,9 +21,9 @@
         grecaptcha.ready(function() {
             document.querySelector('.step1').classList.remove('hidden');
             grecaptcha.execute('6LdkiRwaAAAAAPQ9VOZDoueQVGdVK_-vP94I_5HC', {action: 'examples/v3scores'}).then(function(token) {
-                document.querySelector('.token').innerHTML = 'fetch(\'/recaptcha-v3-verify.php?action=examples/v3scores&token=\'' + token + ')\'';
+                document.querySelector('.token').innerHTML = 'fetch(\'/recaptcha-v3-verify.php?action=examples/v3scores&token=\'' + token + '\')';
 
-                fetch('/recaptcha-v3-verify.php?action=examples/v3scores&token='+token).then(function(response) {
+                fetch('https://www.google.com/recaptcha/api/siteverify').then(function(response) {
                     response.json().then(function(data) {
                         document.querySelector('.response').innerHTML = JSON.stringify(data, null, 2);
                     });
